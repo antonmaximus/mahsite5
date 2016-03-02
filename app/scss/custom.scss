@@ -1,0 +1,402 @@
+@charset "utf-8";
+/*------------------------------------*\
+    CONTENTS
+\*------------------------------------*/
+/*
+IMPORTS
+MAIN
+CAROUSEL
+*/
+
+
+/*------------------------------------*\
+    $IMPORTS
+\*------------------------------------*/
+// @import "reset";
+@import "variables";
+
+
+/*------------------------------------*\
+    $MAIN
+\*------------------------------------*/
+body {
+  background-color: $bg;
+  color: black;
+  font-family: $globalFont;
+  text-align: center;
+
+  a:focus {
+    outline: none; //For firefox
+  }
+}
+
+
+h1 {
+
+}
+
+/*------------------------------------*\
+    $General Content
+\*------------------------------------*/
+h1 {
+  color: $textAlpha;
+  font-weight: bold;
+  font-size: 32px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+header {
+  height: 95vh;
+  width: 100%;
+}
+
+svg {
+    margin: 10% 0 30px;
+    width: 220px;
+    height: 220px;
+
+  a path {
+    fill: $angularRed;
+    transition: all 1s ease-out;
+  }
+  a:hover path {
+    fill: red;
+  }
+}
+
+
+p.doc {
+  color: $textAlpha;
+  font-size: 14px;
+  margin: 0; 
+
+  &:before,
+  &:after {
+    opacity: .2;
+    padding: 6px;
+    font-style: normal;
+    position: relative;
+    content: "•";
+  }
+}
+
+
+//Animation
+.welcome {
+  animation-name: welcome;
+  animation-duration: .9s; }
+
+@keyframes welcome {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+   transform: scale(0);
+   opacity: 0;
+  }
+  82.5% {
+    transform: scale(1.03);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
+
+.colorChange {
+  animation-name: colorChange;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-delay: 1.2s;
+  animation-duration: 1s; }
+@keyframes colorChange {
+    0%   {fill: $angularRed;}
+    50%  {fill: red;}
+    100% {fill: $angularRed;}
+}
+
+
+
+
+/*------------------------------------*\
+    $Pills Navigation
+\*------------------------------------*/
+
+#portfolio {
+  background-color: $tint;
+  padding-top: 5vh; //40px;
+  min-height: 650px;
+
+  .nav {
+    text-align: center;
+    margin-bottom: 3.3%;
+  }
+
+  .nav-pills > li {
+    @extend h1;
+    text-shadow: none;
+    text-decoration: none;
+
+    float:none;
+    display:inline-block;
+
+
+    $textHeight: 32px;
+    $topOffset: 1px;
+    $bottomOffset: 2px;
+    $offset: $topOffset + $bottomOffset;
+
+    a {
+      outline: 0; //for firefox
+      float:left; //Prevents jumping on Safari
+      background-color: $tint; //override bootstrap
+      color: $textAlpha;
+      text-align: center;
+      border-radius: 0;
+      margin: 0 5px;
+
+      padding: $topOffset 0 $bottomOffset ;
+      box-sizing: content-box;
+      height: $textHeight;
+      line-height: $textHeight;
+      overflow: hidden;
+
+      border-style: solid;
+      border-color: transparent;
+      border-width: 3px 0;
+    }
+
+    a:hover {
+      // border-color: $textAlpha;
+    }
+
+    a span{
+      display:block; 
+      height: $textHeight + $offset;
+      vertical-align: middle;
+    }
+
+    a span:first-child{
+      transition: 0.3s;
+      margin-top: -$textHeight - $offset;
+    }
+
+    a:hover span:first-child{
+      margin-top: 0;
+      color: $shade;
+    }    
+
+    &.active a span:first-child,
+    &.active a:hover span:first-child {
+      // margin-top: -$textHeight - $offset;
+      margin-top: 0;
+
+    }
+
+    &.active a {
+      color: $shade;
+      border-color: $shade;
+    }
+
+
+  }
+
+  li.filler {
+    vertical-align: super;
+  }
+
+
+
+}
+
+/*------------------------------------*\
+    $First Tab Pane V2
+\*------------------------------------*/
+
+
+figure {
+  background-color: $plane;
+  background-color: $plane;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+
+  color: $tone;
+  padding-top: 8px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  min-height:  435px;
+
+  img {
+    width: 100%;
+  }
+
+  a img {
+    filter: none;
+  }
+  a:hover img {
+    filter: url('../stylesheets/filters.svg#red');
+  }
+
+  figcaption {
+    text-align: left; 
+    padding: 0 15px;
+
+    a {
+      color: $shade;
+      &:hover, &:focus {
+        color: $angularRed;
+        text-decoration: none;
+        border-bottom: 2px dotted $angularRed;
+      }
+    }
+  }
+
+
+  h3 {
+    margin-top: 0;
+  }
+
+  .gitDiv {
+    margin-top: 10px;
+  }
+
+  span {
+    color: $bg;
+    padding: 1px 4px 2px;
+    border-radius: 3px;
+    background-color: $spanTag;
+    display: inline-block;
+    margin: 0 2px 5px 2px;
+  }
+
+}
+
+
+.topSecret {
+  font-family: 'top_secretbold';
+  position: relative;
+
+  span {
+    position: absolute;
+    left: 20%;
+    top: 31%;
+    font-size: 30px;
+    transform: rotate(-30deg);
+    background-color: transparent;
+    color: $angularRed;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+/*------------------------------------*\
+    $Second Tab Pane
+\*------------------------------------*/
+//Bootstrap Override
+.carousel-inner > .item > img, 
+.carousel-inner > .item > a > img{
+  //width: 100%; /* use this, or not */
+  margin: auto;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background: none;
+}
+
+.carouselWrapper{
+    width: 80%; /* for example */
+    margin: auto;
+  max-width: 675px;
+
+}
+
+
+/*------------------------------------*\
+    $Third Tab Pane
+\*------------------------------------*/
+.objectWrapper {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/*------------------------------------*\
+    $FOOTER
+\*------------------------------------*/
+footer {
+  text-align: center;
+  background-color: $shade;
+  font-size: 0; //prevents rendering of extra space for new line
+
+
+  ul {
+    list-style:  none;
+    margin: 0;
+    padding: 25px 0;
+  }
+
+  li {
+    font-size: $globalFontSize;
+    display: inline-block;
+  }
+
+  span {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  a {
+    display: block;
+    box-sizing: border-box;
+    width: 76px;
+    height: 76px;
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 50%;
+
+    color: #A6A6A6; 
+
+    &:hover, &:focus {
+      text-decoration: none;
+      border: 2px solid $bg;
+      color: #A6A6A6; 
+    }
+
+    &:hover i, &:focus i {
+      color: $bg; 
+    }
+  }
+
+}
+
+
+@import "media_query";
